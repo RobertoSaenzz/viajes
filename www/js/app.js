@@ -30,7 +30,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
       db = window.openDatabase("viajes.db", "1", "Aplicacion", -1);
     }
     
-    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS viajes (id INTEGER PRIMARY KEY AUTOINCREMENT, origen varchar(255),destino varchar(255),fecha_inicio varchar(255),fecha_regreso varchar(255), personas varchar(255), costo varchar(255))');
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS viajes (id INTEGER PRIMARY KEY AUTOINCREMENT, origen varchar(255),destino varchar(255),fecha_inicio varchar(255),fecha_regreso varchar(255),personas varchar(255), costo varchar(255))');
     
 
   });

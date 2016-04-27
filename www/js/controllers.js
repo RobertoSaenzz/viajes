@@ -4,14 +4,14 @@ angular.module('starter.controllers', [])
     
     $scope.showAlert = function() {
      var alertPopup = $ionicPopup.alert({
-       title: 'Viajes',
+       title: 'Agenda',
        template: 'Datos guardados'
      });
     }
     
-    $scope.guardar = function(viajes){
+    $scope.guardar = function(persona){
         
-        $cordovaSQLite.execute(db, 'INSERT INTO viajes (origen,destino,fecha_inicio,fecha_regreso,personas,costo) VALUES (?,?,?,?,?,?)', [viajes.origen,viajes.destino,viajes.fecha_inicio,viajes.fecha_regreso,viajes.personas,viajes.costo])
+        $cordovaSQLite.execute(db, 'INSERT INTO viajes (origen,destino,fecha_inicio,fecha_regreso,personas,costo) VALUES (?,?,?,?,?,?)', [persona.origen,persona.destino,persona.fecha_inicio,persona.fecha_regreso,persona.personas,persona.costo])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {
@@ -73,24 +73,19 @@ angular.module('starter.controllers', [])
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats,$cordovaSQLite) {
   
   //$scope.chat = Chats.get($stateParams.chatId);
-  $scope.viajes = Chats.get($stateParams.chatId);
+  $scope.persona = Chats.get($stateParams.chatId);
   
-  $scope.guardar = function(viajes){
+  $scope.guardar = function(persona){
         
-        $cordovaSQLite.execute(db, 'UPDATE viajes set origen=?,destino=?,fecha_inicio=?,fecha_regreso=?,personas=?,costo=? where id = ?', [viajes.origen,viajes.destino,viajes.fecha_inicio,viajes.fecha_regreso, viajes.personas, viajes.costo ,viajes.id])
+        $cordovaSQLite.execute(db, 'UPDATE viajes set origen=?,destino=?,fecha_inicio=?,fecha_regreso=?,personas=?,costo=? where id = ?', [persona.origen,persona.destino,persona.fecha_inicio,persona.fecha_regreso,persona.persona,persona.costo,persona.id])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {
             $scope.statusMessage = "Error al guardar: " + error.message;
         })
         
-        console.log("ORIGEN: "+viajes.orgien);
-        console.log("DESTINO: "+viajes.destino);
-        console.log("FECHA INICIO: "+viajes.fecha_inicio);
-        console.log("FECHA REGRESO: "+viajes.fecha_regreso);
-        console.log("PERSONAS: "+viajes.personas);
-        console.log("COSTO: "+viajes.costo);
-        console.log("ID: "+viajes.id);
+        console.log("ORIGEN: "+persona.orgien);
+        console.log("ID: "+persona.id);
     }
   
     
